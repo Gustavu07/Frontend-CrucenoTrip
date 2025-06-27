@@ -1,0 +1,63 @@
+.sobre-nosotros-container {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.card {
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.card-body i {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sobre-nosotros-container {
+        padding: 2rem 0;
+    }
+
+    .hero-section {
+        padding: 2rem 0;
+    }
+
+    .card {
+        margin-bottom: 1.5rem;
+    }
+} 
