@@ -5,7 +5,6 @@ import { Award, Globe2, PeopleFill } from 'react-bootstrap-icons';
 const Nosotros: React.FC = () => {
   return (
     <div className="bg-light py-5">
-      {/* Encabezado */}
       <Container className="text-center mb-5">
         <h1 className="fw-bold text-success display-4">Sobre Nosotros</h1>
         <p className="text-muted fs-5">

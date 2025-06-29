@@ -1,0 +1,10 @@
+.icon-link {
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon-link:hover {
+  transform: scale(1.2);
+  color: #28a745;
+}

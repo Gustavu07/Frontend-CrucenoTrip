@@ -11,6 +11,8 @@ import { ProductosListAdmin } from "../pages/admin/productos/ListaProductos";
 import { ProductoForm } from "../pages/admin/productos/FormularioProducto";
 import { ExperienciaForm } from "../pages/admin/experiencias/formularioExperiencia";
 import { ExperienciasListAdmin } from "../pages/admin/experiencias/listaExperiencias";
+import Tienda from "../pages/tienda/tiendaProducto";
+import PerfilUsuario from "../pages/users/PerfilUsuario";
 
 
 
@@ -20,12 +22,16 @@ const RouterConfig = () => {
       <Route path={URLS.HOME} element={<Home />}/>
       <Route path={URLS.LOGIN} element={<LoginForm />} />
       <Route path={URLS.REGISTER} element={<RegisterForm />} />
+      <Route path={URLS.PERFIL} element={<PerfilUsuario />} />
+      
+      {/* Admin Routes */}
 
       {/*<Route path={URLS.Admin.HOME} element={< AdminHome/>} /> */}
       <Route path={URLS.Admin.LISTUSER} element={<ListaUsuarios />} />
       <Route path={URLS.Admin.LISTCATEGORIA_PRODUCTO} element={<CategoriaProductoAdmin />} />
       <Route path={URLS.Admin.LISTCATEGORIA_EXPERIENCIA} element={<CategoriaExperienciaAdmin />} />
 
+      <Route path={URLS.Admin.Productos.LISTPUBLIC} element={<Tienda />} />
       <Route path={URLS.Admin.Productos.LIST} element={<ProductosListAdmin />} />
       <Route path={URLS.Admin.Productos.CREATE} element={<ProductoForm />} />
       <Route path={URLS.Admin.Productos.EDIT} element={<ProductoForm />} />

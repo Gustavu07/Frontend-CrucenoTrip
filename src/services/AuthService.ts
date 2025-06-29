@@ -51,17 +51,10 @@ export class AuthService {
   }
 
   logout(): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      apiClient
-        .post("auth/logout/")
-        .then(() => {
-          localStorage.removeItem("accessToken");
-          localStorage.removeItem("refreshToken");
-          resolve();
-        })
-        .catch((error) => {
-          reject(new Error("Error al cerrar sesión: " + error.message));
-        });
+    return new Promise<void>((resolve) => {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      resolve();
     });
   }
 

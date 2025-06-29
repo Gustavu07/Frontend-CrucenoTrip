@@ -64,56 +64,68 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="container my-5" style={{ maxWidth: "500px" }}>
-      <h2 className="mb-4 text-center text-success">Iniciar sesión</h2>
+    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+      <div className="card shadow p-4" style={{ maxWidth: "400px", width: "100%" }}>
+        <h2 className="mb-4 text-center text-success">Iniciar sesión</h2>
 
-      {loginError && (
-        <div className="alert alert-danger text-center" role="alert">
-          {loginError}
+        {loginError && (
+          <div className="alert alert-danger text-center" role="alert">
+            {loginError}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Correo electrónico</label>
+            <input
+              type="email"
+              id="email"
+              className={`form-control ${errors.email ? "is-invalid" : ""}`}
+              {...register("email", {
+                required: "Este campo es requerido",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Correo inválido",
+                },
+              })}
+            />
+            {errors.email && (
+              <div className="invalid-feedback">{errors.email.message}</div>
+            )}
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Contraseña</label>
+            <input
+              type="password"
+              id="password"
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
+              {...register("password", { required: "Este campo es requerido" })}
+            />
+            {errors.password && (
+              <div className="invalid-feedback">{errors.password.message}</div>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="btn btn-success w-100"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Ingresando..." : "Ingresar"}
+          </button>
+        </form>
+
+        <div className="mt-4 text-center">
+          <span>¿No tienes cuenta? </span>
+          <button
+            className="btn btn-link text-success p-0"
+            onClick={() => navigate(URLS.REGISTER)} // ← adapta esta URL
+          >
+            Regístrate aquí
+          </button>
         </div>
-      )}
-
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Correo electrónico</label>
-          <input
-            type="email"
-            id="email"
-            className={`form-control ${errors.email ? "is-invalid" : ""}`}
-            {...register("email", {
-              required: "Este campo es requerido",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Correo inválido",
-              },
-            })}
-          />
-          {errors.email && (
-            <div className="invalid-feedback">{errors.email.message}</div>
-          )}
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            className={`form-control ${errors.password ? "is-invalid" : ""}`}
-            {...register("password", { required: "Este campo es requerido" })}
-          />
-          {errors.password && (
-            <div className="invalid-feedback">{errors.password.message}</div>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          className="btn btn-success w-100"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Ingresando..." : "Ingresar"}
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

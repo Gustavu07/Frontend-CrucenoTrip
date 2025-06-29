@@ -1,7 +1,4 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-
-
+/* tengo que arreglar esto aqui estoy declarando botstrap no necesito hacerlo en cada componente arreglar eso  */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,11 +25,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--background-color);
 }
+
 
 h1 {
   font-size: 3.2em;
