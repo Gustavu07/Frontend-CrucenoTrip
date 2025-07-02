@@ -19,10 +19,12 @@ export const RegisterForm = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [licenciasFile, setLicenciasFile] = useState<File | null>(null);
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -38,7 +40,8 @@ export const RegisterForm = () => {
         registerRequest.nombre,
         registerRequest.apellido,
         registerRequest.telefono,
-        registerRequest.rol
+        registerRequest.rol,
+        licenciasFile // ← nuevo argumento
       )
       .then(() => navigate(URLS.LOGIN))
       .catch((err) => {
@@ -51,6 +54,8 @@ export const RegisterForm = () => {
       .finally(() => setIsSubmitting(false));
   };
 
+  const selectedRol = watch("rol");
+
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100 bg-light">
       <div className="card shadow p-4" style={{ maxWidth: "500px", width: "100%" }}>
@@ -58,6 +63,7 @@ export const RegisterForm = () => {
 
         {error && <div className="alert alert-danger text-center">{error}</div>}
 
+        {/* IMPORTANTE: no necesitas encType aquí, React lo añade al detectar <input type="file"> */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Correo electrónico</label>
@@ -124,14 +130,14 @@ export const RegisterForm = () => {
                 required: "Este campo es requerido",
                 minLength: {
                   value: 6,
-                  message: "La contraseña debe tener al menos 6 caracteres"
-                }
+                  message: "La contraseña debe tener al menos 6 caracteres",
+                },
               })}
             />
             {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
           </div>
 
-          <div className="mb-4">
+          <div className="mb-3">
             <label htmlFor="rol" className="form-label">Rol</label>
             <select
               id="rol"
@@ -144,6 +150,20 @@ export const RegisterForm = () => {
             </select>
             {errors.rol && <div className="invalid-feedback">{errors.rol.message}</div>}
           </div>
+
+          {/* Campo de archivo SOLO visible para guía */}
+          {selectedRol === "guia" && (
+            <div className="mb-3">
+              <label htmlFor="licencias" className="form-label">Licencia (PDF o imagen)</label>
+              <input
+                type="file"
+                id="licencias"
+                accept=".pdf,.jpg,.jpeg,.png"
+                className="form-control"
+                onChange={(e) => setLicenciasFile(e.target.files?.[0] || null)}
+              />
+            </div>
+          )}
 
           <button type="submit" className="btn btn-success w-100" disabled={isSubmitting}>
             {isSubmitting ? "Registrando..." : "Registrarse"}

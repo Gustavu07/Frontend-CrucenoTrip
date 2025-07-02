@@ -65,25 +65,33 @@ export class AuthService {
     nombre: string,
     apellido: string,
     telefono: string,
-    rol: string
+    rol: string,
+    licencias?: File | null
   ): Promise<RegisterResponse> {
     return new Promise<RegisterResponse>((resolve, reject) => {
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("nombre", nombre);
+      formData.append("apellido", apellido);
+      formData.append("telefono", telefono);
+      formData.append("rol", rol);
+
+      if (rol === "guia" && licencias) {
+        formData.append("licencias", licencias);
+      }
+
       axios
-        .post("http://127.0.0.1:8000/crucenoTrip/auth/register/", {
-          username,
-          email,
-          password,
-          nombre,
-          apellido,
-          telefono,
-          rol,
+        .post("http://127.0.0.1:8000/crucenoTrip/auth/register/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         })
-        .then((response) => {
-          resolve(response.data);
-        })
-        .catch((error) => {
-          reject(new Error("Error al registrar el usuario: " + error.message));
-        });
+        .then((response) => resolve(response.data))
+        .catch((error) =>
+          reject(new Error("Error al registrar el usuario: " + error.message))
+        );
     });
   }
 

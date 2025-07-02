@@ -1,54 +1,38 @@
-import { CarritoReserva } from "../models/carritoReserva";
 import apiClient from "./interceptors";
+import { CarritoReserva } from "../models/carritoReserva";
 
 export class CarritoReservaService {
-  async getMiCarritoReserva(): Promise<CarritoReserva[]> {
-    try {
-      const res = await apiClient.get("carrito-reserva/");
-      return res.data;
-    } catch (error: any) {
-      throw new Error(
-        "Error al obtener el carrito de reserva: " + error.message
-      );
-    }
+  getMiCarrito(): Promise<CarritoReserva> {
+    return new Promise((resolve, reject) => {
+      apiClient
+        .get("carrito-reserva/")
+        .then((response) => {
+          if (Array.isArray(response.data) && response.data.length > 0) {
+            resolve(response.data[0]); // solo debería haber uno
+          } else {
+            reject(new Error("No se encontró ningún carrito."));
+          }
+        })
+        .catch((error) =>
+          reject(new Error("Error al obtener el carrito: " + error.message))
+        );
+    });
   }
 
-  async getCarritoReservaById(id: number): Promise<CarritoReserva> {
-    try {
-      const res = await apiClient.get(`carrito-reserva/${id}/`);
-      return res.data;
-    } catch (error: any) {
-      throw new Error(
-        "Error al obtener el carrito de reserva: " + error.message
-      );
-    }
-  }
-
-  async createCarritoReserva(): Promise<CarritoReserva> {
-    try {
-      const res = await apiClient.post("carrito-reserva/", {});
-      return res.data;
-    } catch (error: any) {
-      if (error.response?.data?.detail) {
-        throw new Error(error.response.data.detail);
-      }
-      if (
-        error.response?.data?.non_field_errors?.[0] ===
-        "Ya tienes un carrito de reserva."
-      ) {
-        throw new Error("Ya tienes un carrito de reserva.");
-      }
-      throw new Error("Error al crear el carrito de reserva: " + error.message);
-    }
-  }
-
-  async deleteCarritoReserva(id: number): Promise<void> {
-    try {
-      await apiClient.delete(`carrito-reserva/${id}/`);
-    } catch (error: any) {
-      throw new Error(
-        "Error al eliminar el carrito de reserva: " + error.message
-      );
-    }
+  crearCarrito(): Promise<CarritoReserva> {
+    return new Promise((resolve, reject) => {
+      apiClient
+        .post("carrito-reserva/", {})
+        .then((response) => resolve(response.data))
+        .catch((error) => {
+          if (error.response?.status === 400) {
+            reject(new Error("Ya tienes un carrito de reserva."));
+          } else if (error.response?.status === 403) {
+            reject(new Error("Debes iniciar sesión para crear un carrito."));
+          } else {
+            reject(new Error("Error al crear el carrito: " + error.message));
+          }
+        });
+    });
   }
 }

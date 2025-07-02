@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Producto } from "../../../models/producto";
+import NavbarComponent from '../../../components/adminNavbar';
 import { ProductoService } from "../../../services/productoService";
 import { URLS } from "../../../navigation/constants";
 
@@ -28,6 +29,9 @@ export const ProductosListAdmin = () => {
   }, []);
 
   return (
+    <>
+      <NavbarComponent />
+      
       <div className="container-fluid">
         <h3 className="mb-4">Gestión de Productos</h3>
 
@@ -54,7 +58,6 @@ export const ProductosListAdmin = () => {
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{p.nombre}</h5>
                   <p className="card-text">{p.descripcion}</p>
-                  <p className="mb-1"><strong>Precio:</strong> Bs. {p.precio}</p>
                   <p className="mb-2"><strong>Categoría:</strong> {p.categoria_objeto?.nombre || "-"}</p>
 
                   <div className="mt-auto d-flex justify-content-between">
@@ -88,5 +91,6 @@ export const ProductosListAdmin = () => {
           </button>
         </div>
       </div>
+    </>
   );
 };

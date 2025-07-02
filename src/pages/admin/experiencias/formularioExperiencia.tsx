@@ -38,7 +38,7 @@ const onSubmit: SubmitHandler<ExperienciaFormData> = async (data) => {
       await service.update({ ...experiencia, id: Number(id) });
       alert("Experiencia actualizada");
     } else {
-      await service.create(experiencia);
+      await service.insert(experiencia);
       alert("Experiencia creada");
     }
 

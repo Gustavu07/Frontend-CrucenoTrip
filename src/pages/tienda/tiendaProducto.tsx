@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, Offcanvas } from 'react-bootstrap';
 import { Cart, BagFill, List } from 'react-bootstrap-icons';
+import { useNavigate } from 'react-router';
 import NavbarComponent from "../../components/Navbar";
 import Footer from '../../components/footer';
 import '../../styles/Card.css';
@@ -10,6 +11,7 @@ import { ProductoService } from '../../services/productoService';
 const Tienda = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [productos, setProductos] = useState<Producto[]>([]);
+  const navigate = useNavigate();
 
   const handleShow = () => setShowSidebar(true);
   const handleClose = () => setShowSidebar(false);
@@ -26,33 +28,32 @@ const Tienda = () => {
       <NavbarComponent />
 
       {!showSidebar && (
-  <Button
-    variant="success"
-    className="position-fixed start-0 m-3"
-    style={{ zIndex: 1050, top: '70px' }}
-    onClick={handleShow}
-  >
-    <List size={20} />
-  </Button>
-)}
+        <Button
+          variant="success"
+          className="position-fixed start-0 m-3"
+          style={{ zIndex: 1050, top: '70px' }}
+          onClick={handleShow}
+        >
+          <List size={20} />
+        </Button>
+      )}
 
-<Offcanvas
-  show={showSidebar}
-  onHide={handleClose}
-  backdrop
-  scroll={false}
-  placement="start"
-  style={{ top: '56px', height: 'calc(100% - 56px)' }} // Empieza justo debajo del navbar y no tapa el navbar
->
-  <Offcanvas.Header closeButton>
-    <Offcanvas.Title>Menú de Tienda</Offcanvas.Title>
-  </Offcanvas.Header>
-  <Offcanvas.Body>
-    <p>Buscar productos</p>
-    <p>Categorías</p>
-  </Offcanvas.Body>
-</Offcanvas>
-
+      <Offcanvas
+        show={showSidebar}
+        onHide={handleClose}
+        backdrop
+        scroll={false}
+        placement="start"
+        style={{ top: '56px', height: 'calc(100% - 56px)' }}
+      >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Menú de Tienda</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <p>Buscar productos</p>
+          <p>Categorías</p>
+        </Offcanvas.Body>
+      </Offcanvas>
 
       <div
         className="flex-grow-1"
@@ -67,7 +68,11 @@ const Tienda = () => {
           <Row className="g-4 justify-content-center px-3">
             {productos.map(producto => (
               <Col key={producto.id} xs={12} sm={6} md={4} lg={3}>
-                <Card className="h-100 shadow-sm border-0 card-hover">
+                <Card
+                  className="h-100 shadow-sm border-0 card-hover"
+                  onClick={() => navigate(`/tienda/productos/${producto.id}`)}
+                  style={{ cursor: 'pointer' }}
+                >
                   {producto.imagen ? (
                     <Card.Img
                       variant="top"
@@ -99,16 +104,13 @@ const Tienda = () => {
                   <Card.Body className="d-flex flex-column justify-content-between">
                     <div>
                       <Card.Title className="text-dark">{producto.nombre}</Card.Title>
-                      <Card.Text className="text-success fw-bold">
-                        Bs. {Number(producto.precio).toFixed(2)}
-                      </Card.Text>
                     </div>
                     <div className="d-flex justify-content-between mt-3">
-                      <Button variant="success" className="me-2 flex-fill">
+                      <Button variant="success" className="me-2 flex-fill" onClick={(e) => e.stopPropagation()}>
                         <BagFill className="me-2" />
                         Comprar
                       </Button>
-                      <Button variant="outline-primary" className="flex-fill">
+                      <Button variant="outline-primary" className="flex-fill" onClick={(e) => e.stopPropagation()}>
                         <Cart />
                       </Button>
                     </div>

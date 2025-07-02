@@ -13,6 +13,11 @@ import { ExperienciaForm } from "../pages/admin/experiencias/formularioExperienc
 import { ExperienciasListAdmin } from "../pages/admin/experiencias/listaExperiencias";
 import Tienda from "../pages/tienda/tiendaProducto";
 import PerfilUsuario from "../pages/users/PerfilUsuario";
+import ProductoDetalle from "../pages/tienda/detailProducto";
+import ExperienciasPublicas from "../pages/destinos/experiencia";
+import DetalleExperiencia from "../pages/destinos/detailExperiencia";
+import MisReservas from "../pages/reservas/reservas";
+import DetalleReserva from "../pages/reservas/detalleReserva";
 
 
 
@@ -23,19 +28,20 @@ const RouterConfig = () => {
       <Route path={URLS.LOGIN} element={<LoginForm />} />
       <Route path={URLS.REGISTER} element={<RegisterForm />} />
       <Route path={URLS.PERFIL} element={<PerfilUsuario />} />
-      
-      {/* Admin Routes */}
+      <Route path={URLS.LISTPUBLIC} element={<Tienda />} />
+      <Route path={URLS.DETALLE} element={<ProductoDetalle />} />
+      <Route path={URLS.EXPERIENCIAS_PUBLICAS} element={<ExperienciasPublicas />} />
+      <Route path={URLS.EXPERIENCIA_DETALLE} element={<DetalleExperiencia />} />
+      <Route path={URLS.RESERVA} element={<MisReservas />} />
+      <Route path={URLS.RESERVA_DETALLE} element={<DetalleReserva />} />
 
-      {/*<Route path={URLS.Admin.HOME} element={< AdminHome/>} /> */}
+      {/* Rutas de administración */}
       <Route path={URLS.Admin.LISTUSER} element={<ListaUsuarios />} />
       <Route path={URLS.Admin.LISTCATEGORIA_PRODUCTO} element={<CategoriaProductoAdmin />} />
       <Route path={URLS.Admin.LISTCATEGORIA_EXPERIENCIA} element={<CategoriaExperienciaAdmin />} />
-
-      <Route path={URLS.Admin.Productos.LISTPUBLIC} element={<Tienda />} />
       <Route path={URLS.Admin.Productos.LIST} element={<ProductosListAdmin />} />
       <Route path={URLS.Admin.Productos.CREATE} element={<ProductoForm />} />
       <Route path={URLS.Admin.Productos.EDIT} element={<ProductoForm />} />
-
       <Route path={URLS.Admin.Experiencias.LIST} element={<ExperienciasListAdmin />} />
       <Route path={URLS.Admin.Experiencias.CREATE} element={<ExperienciaForm />} />
       <Route path={URLS.Admin.Experiencias.EDIT} element={<ExperienciaForm />} />

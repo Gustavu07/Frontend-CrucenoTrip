@@ -82,16 +82,30 @@ const PerfilUsuario = () => {
             </Col>
           </Row>
 
-          {perfil.licencias && typeof perfil.licencias === "string" && (
-            <Row>
-              <Col xs={1}><i className="bi bi-file-earmark-text text-success" /></Col>
+          {/* Licencia como Card */}
+          {typeof perfil.licencias === "string" && /\.(jpg|jpeg|png|gif)$/i.test(perfil.licencias) && (
+            <Row className="mb-3">
+              <Col xs={1}><i className="bi bi-card-image text-success" /></Col>
               <Col>
                 <strong>Licencia:</strong>
-                <div>
-                  <a href={perfil.licencias} target="_blank" rel="noopener noreferrer">
-                    Ver documento
-                  </a>
-                </div>
+                <Card
+                  className="shadow-sm mt-2 border-0"
+                  style={{ maxWidth: '300px', borderRadius: '12px', overflow: 'hidden' }}
+                >
+                  <Card.Img
+                    src={
+                      perfil.licencias.startsWith('/media/')
+                        ? `http://127.0.0.1:8000${perfil.licencias}`
+                        : perfil.licencias
+                    }
+                    alt="Licencia del guía"
+                    style={{
+                      height: '180px',
+                      objectFit: 'cover',
+                      objectPosition: 'center'
+                    }}
+                  />
+                </Card>
               </Col>
             </Row>
           )}
