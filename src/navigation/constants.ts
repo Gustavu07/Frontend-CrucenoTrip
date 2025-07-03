@@ -5,7 +5,7 @@ export const URLS = {
   PERFIL: "/perfil",
   NOSOTROS: "/nosotros",
   LISTPUBLIC: "/tienda/productos",
-  DETALLE: "/tienda/productos/:id",
+  DETALLE_PRODUCTO: "/tienda/productos/:id",
   EXPERIENCIAS_PUBLICAS: "/experiencias",
   EXPERIENCIA_DETALLE: "/experiencias/:id",
   RESERVA: "/reservas",

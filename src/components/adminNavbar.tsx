@@ -16,70 +16,93 @@ const NavbarAdminComponent: React.FC = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="shadow-sm border-bottom"
-      style={{
-        background: 'linear-gradient(to right, #1b1f23, #2e2e2e)',
-        zIndex: 1030,
-      }}
+      style={{ backgroundColor: '#1f2937', zIndex: 1030 }}
     >
       <Navbar expand="md" variant="dark" expanded={expanded} className="px-3 py-2">
         <Container fluid>
-          <Navbar.Brand className="text-white fw-bold fs-4">
-            <i className="bi bi-speedometer2 me-2" /> Panel de Administración
+          <Navbar.Brand className="text-white fw-bold fs-4 d-flex align-items-center gap-2">
+            <i className="bi bi-speedometer2" />
+            <span>Panel de Administración</span>
           </Navbar.Brand>
 
           <Navbar.Toggle
             aria-controls="navbar-nav"
             onClick={() => setExpanded(!expanded)}
+            className="border-0"
           />
 
           <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto d-flex align-items-md-center gap-3 flex-column flex-md-row text-white">
-              <Nav.Link className="text-white" onClick={() => navigate(URLS.Admin.LISTUSER)}>
-                <i className="bi bi-people-fill me-1" /> Usuarios
-              </Nav.Link>
+            <Nav className="ms-auto d-flex align-items-center gap-3 flex-column flex-md-row text-white">
 
-              <NavDropdown title={<><i className="bi bi-box-seam me-1" /> Productos</>} menuVariant="dark">
-                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Productos.LIST)}>Lista</NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Productos.CREATE)}>Crear</NavDropdown.Item>
+              {/* Usuarios */}
+              <NavDropdown title={<i className="bi bi-people-fill fs-5" />} menuVariant="dark">
+                <NavDropdown.Item onClick={() => navigate(URLS.Admin.LISTUSER)}>
+                  Lista de Usuarios
+                </NavDropdown.Item>
               </NavDropdown>
 
-              <NavDropdown title={<><i className="bi bi-geo-alt-fill me-1" /> Experiencias</>} menuVariant="dark">
-                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Experiencias.LIST)}>Lista</NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Experiencias.CREATE)}>Crear</NavDropdown.Item>
+              {/* Productos */}
+              <NavDropdown title={<i className="bi bi-box-seam fs-5" />} menuVariant="dark">
+                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Productos.LIST)}>
+                  Lista de Productos
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Productos.CREATE)}>
+                  Crear Producto
+                </NavDropdown.Item>
               </NavDropdown>
 
-              <Nav.Link className="text-white" onClick={() => navigate(URLS.Admin.LISTCATEGORIA_PRODUCTO)}>
-                <i className="bi bi-tags me-1" /> Cat. Productos
-              </Nav.Link>
+              {/* Experiencias */}
+              <NavDropdown title={<i className="bi bi-geo-alt-fill fs-5" />} menuVariant="dark">
+                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Experiencias.LIST)}>
+                  Lista de Experiencias
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate(URLS.Admin.Experiencias.CREATE)}>
+                  Crear Experiencia
+                </NavDropdown.Item>
+              </NavDropdown>
 
-              <Nav.Link className="text-white" onClick={() => navigate(URLS.Admin.LISTCATEGORIA_EXPERIENCIA)}>
-                <i className="bi bi-compass me-1" /> Cat. Experiencias
-              </Nav.Link>
+              {/* Categorías */}
+              <NavDropdown title={<i className="bi bi-tags fs-5" />} menuVariant="dark">
+                <NavDropdown.Item onClick={() => navigate(URLS.Admin.LISTCATEGORIA_PRODUCTO)}>
+                  Categorías de Productos
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate(URLS.Admin.LISTCATEGORIA_EXPERIENCIA)}>
+                  Categorías de Experiencias
+                </NavDropdown.Item>
+              </NavDropdown>
 
+              {/* Perfil y logout */}
               <NavDropdown
                 align="end"
-                title={
-                  <span className="d-flex align-items-center">
-                    <i className="bi bi-person-circle fs-5 me-1" />
-                    <span className="d-none d-md-inline">Admin</span>
-                  </span>
-                }
-                className="text-white"
+                title={<i className="bi bi-person-circle fs-5" />}
                 menuVariant="dark"
               >
                 <NavDropdown.Item onClick={() => navigate(URLS.PERFIL)}>
-                  <i className="bi bi-person-lines-fill me-2" />
-                  Perfil
+                  <i className="bi bi-person-lines-fill me-2" /> Perfil
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={doLogout}>
-                  <i className="bi bi-box-arrow-right me-2" />
-                  Cerrar sesión
+                  <i className="bi bi-box-arrow-right me-2" /> Cerrar sesión
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      <style>{`
+        .nav-item-modern {
+          transition: all 0.3s ease;
+        }
+        .nav-item-modern:hover {
+          color: #60a5fa !important;
+        }
+        .dropdown-menu {
+          background-color: #1f2937 !important;
+        }
+        .dropdown-item:hover {
+          background-color: #374151 !important;
+        }
+      `}</style>
     </motion.div>
   );
 };

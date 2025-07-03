@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import { Experiencia } from '../../models/experiencia';

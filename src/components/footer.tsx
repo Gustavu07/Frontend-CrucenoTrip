@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Facebook, Instagram, Twitter, Youtube } from "react-bootstrap-icons";
+import { Facebook, Instagram, MusicNote, Youtube } from "react-bootstrap-icons";
 import "../styles/footer.css"; 
 
 const Footer: React.FC = () => {
@@ -29,13 +29,13 @@ const Footer: React.FC = () => {
               <a href="https://www.facebook.com/people/Cruce%C3%B1o-Trip/61575843273593/" className="icon-link" target="_blank" rel="noopener noreferrer">
                 <Facebook />
               </a>
-              <a href="#" className="icon-link">
+              <a href="https://www.instagram.com/crucenotrip_scz?igsh=aDFoNXA5c2lpeWU5" className="icon-link">
                 <Instagram />
               </a>
               <a href="#" className="icon-link">
-                <Twitter />
+              <MusicNote />
               </a>
-              <a href="#" className="icon-link">
+              <a href="https://www.youtube.com/@Cruce%C3%B1oTrip" className="icon-link">
                 <Youtube />
               </a>
             </div>

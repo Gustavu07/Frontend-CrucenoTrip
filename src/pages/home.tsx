@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import NavbarComponent from '../components/Navbar';
@@ -23,30 +23,18 @@ const lugares: Lugar[] = [
     id: 2,
     nombre: 'Parque El Arenal',
     descripcion: 'Un oasis urbano con laguna, arte y vegetación.',
-    imagen: '/Santa-Cruz-Church-Bolivia.jpg',
+    imagen: '/parque-lomas-dearena.jpg',
   },
   {
     id: 3,
-    nombre: 'Cascadas Espejillos',
-    descripcion: 'Naturaleza pura con senderos, mariposas y piscinas naturales.',
-    imagen: '/2f28ecb9b611b548d13861c5f6359ed1.jpg',
+    nombre: 'Porongo City',
+    descripcion: ' ubicado en la provincia Andrés Ibáñez en el departamento de Santa Cruz',
+    imagen: '/01.jpg',
   },
 ];
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.pulse.is/livechat/loader.js';
-    script.setAttribute('data-live-chat-id', '686072039c750b834c01f507');
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   return (
     <>
@@ -73,6 +61,7 @@ const Home: React.FC = () => {
           <Button
             variant="light"
             size="lg"
+            style={{ backgroundColor: '#198754', borderColor: '#198754', color: 'white' }}
             className="mt-4 px-5 py-3 fw-bold shadow animate__animated animate__zoomIn"
             onClick={() => navigate('/experiencias')}
           >

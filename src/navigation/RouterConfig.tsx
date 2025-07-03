@@ -13,11 +13,12 @@ import { ExperienciaForm } from "../pages/admin/experiencias/formularioExperienc
 import { ExperienciasListAdmin } from "../pages/admin/experiencias/listaExperiencias";
 import Tienda from "../pages/tienda/tiendaProducto";
 import PerfilUsuario from "../pages/users/PerfilUsuario";
-import ProductoDetalle from "../pages/tienda/detailProducto";
 import ExperienciasPublicas from "../pages/destinos/experiencia";
 import DetalleExperiencia from "../pages/destinos/detailExperiencia";
 import MisReservas from "../pages/reservas/reservas";
 import DetalleReserva from "../pages/reservas/detalleReserva";
+import Nosotros from "../pages/sobreNosotros";
+import ProductoDetalle from "../pages/tienda/detailProducto";
 
 
 
@@ -29,11 +30,12 @@ const RouterConfig = () => {
       <Route path={URLS.REGISTER} element={<RegisterForm />} />
       <Route path={URLS.PERFIL} element={<PerfilUsuario />} />
       <Route path={URLS.LISTPUBLIC} element={<Tienda />} />
-      <Route path={URLS.DETALLE} element={<ProductoDetalle />} />
+      <Route path={URLS.DETALLE_PRODUCTO} element={<ProductoDetalle />} />
       <Route path={URLS.EXPERIENCIAS_PUBLICAS} element={<ExperienciasPublicas />} />
       <Route path={URLS.EXPERIENCIA_DETALLE} element={<DetalleExperiencia />} />
       <Route path={URLS.RESERVA} element={<MisReservas />} />
       <Route path={URLS.RESERVA_DETALLE} element={<DetalleReserva />} />
+      <Route path={URLS.NOSOTROS} element={<Nosotros />} /> {/* Cambiar a la página de Sobre Nosotros si existe */}
 
       {/* Rutas de administración */}
       <Route path={URLS.Admin.LISTUSER} element={<ListaUsuarios />} />

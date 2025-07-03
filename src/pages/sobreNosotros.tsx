@@ -1,9 +1,13 @@
 import React from 'react';
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 import { Award, Globe2, PeopleFill } from 'react-bootstrap-icons';
+import NavbarComponent from "../components/Navbar";
+import Footer from '../components/footer';
 
 const Nosotros: React.FC = () => {
   return (
+    <>
+    <NavbarComponent />
     <div className="bg-light py-5">
       <Container className="text-center mb-5">
         <h1 className="fw-bold text-success display-4">Sobre Nosotros</h1>
@@ -81,7 +85,9 @@ const Nosotros: React.FC = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 

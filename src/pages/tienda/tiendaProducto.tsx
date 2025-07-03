@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, Offcanvas } from 'react-bootstrap';
-import { Cart, BagFill, List } from 'react-bootstrap-icons';
+import { List } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router';
 import NavbarComponent from "../../components/Navbar";
 import Footer from '../../components/footer';
@@ -68,11 +68,7 @@ const Tienda = () => {
           <Row className="g-4 justify-content-center px-3">
             {productos.map(producto => (
               <Col key={producto.id} xs={12} sm={6} md={4} lg={3}>
-                <Card
-                  className="h-100 shadow-sm border-0 card-hover"
-                  onClick={() => navigate(`/tienda/productos/${producto.id}`)}
-                  style={{ cursor: 'pointer' }}
-                >
+                <Card className="h-100 shadow-sm border-0 card-hover">
                   {producto.imagen ? (
                     <Card.Img
                       variant="top"
@@ -105,13 +101,13 @@ const Tienda = () => {
                     <div>
                       <Card.Title className="text-dark">{producto.nombre}</Card.Title>
                     </div>
-                    <div className="d-flex justify-content-between mt-3">
-                      <Button variant="success" className="me-2 flex-fill" onClick={(e) => e.stopPropagation()}>
-                        <BagFill className="me-2" />
-                        Comprar
-                      </Button>
-                      <Button variant="outline-primary" className="flex-fill" onClick={(e) => e.stopPropagation()}>
-                        <Cart />
+                    <div className="d-flex justify-content-center mt-3">
+                      <Button
+                        variant="outline-success"
+                        className="flex-fill"
+                        onClick={() => navigate(`/tienda/productos/${producto.id}`)}
+                      >
+                        Mostrar detalles
                       </Button>
                     </div>
                   </Card.Body>
