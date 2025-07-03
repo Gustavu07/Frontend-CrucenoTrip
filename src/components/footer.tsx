@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
               <a href="https://www.instagram.com/crucenotrip_scz?igsh=aDFoNXA5c2lpeWU5" className="icon-link">
                 <Instagram />
               </a>
-              <a href="#" className="icon-link">
+              <a href="https://www.tiktok.com/@crucenotrip_scz?_t=ZM-8xfjSoJTYrV&_r=1" className="icon-link">
               <MusicNote />
               </a>
               <a href="https://www.youtube.com/@Cruce%C3%B1oTrip" className="icon-link">
