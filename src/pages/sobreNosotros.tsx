@@ -20,7 +20,7 @@ const Nosotros: React.FC = () => {
         <Row className="align-items-center g-4">
           <Col md={6}>
             <Image
-              src="/WhatsApp Image 2025-05-16 at 19.34.30.jpeg"
+              src="/logo1.jpeg"
               alt="Turismo"
               fluid
               rounded
