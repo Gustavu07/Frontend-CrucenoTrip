@@ -169,7 +169,7 @@ const Home: React.FC = () => {
         <Row className="align-items-center">
           <Col xs={12} md={6} className="mb-4 mb-md-0">
             <img
-              src="/public/5-2.jpeg" // 👈 Asegúrate de reemplazar esto con la ruta correcta del archivo
+              src="/5-2.jpeg"
               alt="Mujeres sonriendo"
               className="img-fluid rounded shadow"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}

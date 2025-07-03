@@ -31,7 +31,7 @@ const NavbarComponent: React.FC = () => {
             className="d-flex align-items-center gap-2 fw-semibold fs-4 text-white"
             style={{ cursor: 'pointer' }}
           >
-            <img src="/public/CRUCEÑO TRIP (2).png" height={32} alt="Logo" />
+            <img src="/CRUCEÑO TRIP (2).png" height={32} alt="Logo" />
             <span>Cruceño Trip</span>
           </Navbar.Brand>
 
